@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected (MenuItem item){
         switch (item.getItemId()){
             case R.id.menuCalculadora:
-                Toast.makeText(getApplicationContext(), "Calculadora", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClassName("com.android.calculator2","com.android.calculator2.Calculator");
+                startActivity(intent);
                 break;
             case R.id.menuEmail:
                 Toast.makeText(getApplicationContext(), "Email", Toast.LENGTH_LONG).show();
