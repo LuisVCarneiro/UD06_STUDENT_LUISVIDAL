@@ -2,4 +2,9 @@
     <string name="app_name">UD06_STUDENT_LUISVIDAL</string>
     <string name="button_1">PROVINCIA/CALCULADORA/EMAIL</string>
     <string name="button_2">PROVINCIA USUARIO</string>
+    <string name="et_provincia">Teclea una provincia</string>
+    <string name="button_provincia">CERRAR</string>
+    <string name="menu1">CALCULADORA</string>
+    <string name="menu2">EMAIL</string>
+
 </resources>
