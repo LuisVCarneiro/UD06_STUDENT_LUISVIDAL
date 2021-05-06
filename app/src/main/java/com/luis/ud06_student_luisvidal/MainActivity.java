@@ -48,7 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private void leerBundle(){
         Bundle bundle = getIntent().getExtras();
         String sProvincia = bundle.getString("key1","Default");
-        Toast.makeText(getApplicationContext(), "La provincia del usuario es: " + sProvincia.toString(), Toast.LENGTH_LONG).show();
+        if (sProvincia.equals("Default")) {
+            Toast.makeText(getApplicationContext(), "Teclea una provincia", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "La provincia del usuario es: " + sProvincia.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
