@@ -70,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.menuEmail:
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","correo@gmail.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Android APP - ");
-                startActivity(emailIntent);
+                Intent intent1 = new Intent (Intent.ACTION_SEND);
+                intent1.setType("application/octet-stream");
+                intent1.putExtra(Intent.EXTRA_SUBJECT,"Subject");
+                intent1.putExtra(Intent.EXTRA_TEXT,"Texto do email");
+                intent1.putExtra(Intent.EXTRA_EMAIL,new String[]{"android@cursoandroid.es"});
+                startActivity(intent1);
                 break;
         }
         return true;
