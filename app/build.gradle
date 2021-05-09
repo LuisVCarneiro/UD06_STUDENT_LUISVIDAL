@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('D:\\AndroidStudioProjects\\Almacén de claves\\MiAlmacenClaves.jks')
+            storePassword 'abc123.'
+            keyAlias 'key0'
+            keyPassword 'abc123.'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -20,6 +28,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfigs signingConfigs.config
+        }
+        debug{
+            signingConfigs signingConfigs.config
         }
     }
     compileOptions {
