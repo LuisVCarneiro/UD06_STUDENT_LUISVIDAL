@@ -24,11 +24,18 @@ public class MainActivity extends AppCompatActivity {
         setupView();
     }
 
+    /*
+    Método donde inicializo los objetos incluídos en el diseño, en este caso dos botones
+     */
     private void setupView (){
         button_1 = findViewById(R.id.button1);
         button_2 = findViewById(R.id.button2);
         registerForContextMenu(button_1);
-
+    /*
+    Con el método setOnclickListener implemento la acción a realizar cuando se hace click en el
+    primer botón (Provincia/Calculadora/Email). En este caso, hace un intent para llamar a la
+    segunda activity.
+     */
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,0);
             }
         });
-
+    /*
+    Lo mismo hago para el segundo botón, donde inicializo el método que lee el bundle recibido por
+    la segunda activity.
+     */
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +54,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    /*
+    Método que recoje el bundle de la segunda actividad en un String con el nombre de la provincia
+    para posteriormente mostrarlo en el Toast.
+    En caso de que el valor esté en blanco, o bien, si no cambia el texto inicial, muestra un mensaje
+    diferente en el Toast
+     */
     private void leerBundle(){
         Bundle bundle = getIntent().getExtras();
         String sProvincia = bundle.getString("key1","Default");
@@ -55,13 +70,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "La provincia del usuario es: " + sProvincia.toString(), Toast.LENGTH_LONG).show();
         }
     }
-
+    /*
+    onCreateContextMenu crea el menú contextual que emerge cuando realizamos un longClick en el botón_1.
+    Los item de este menú están definidos en res/menu/menu_long_click
+     */
     public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_long_click, menu);
     }
-
+    /*
+    Con este método manejo la selección de los item del menu contextual, lanzando la calculadora en el
+    primer caso o gmail en el segundo. Para este último caso, seguí el código de los apuntes haciendo
+    una llamada según la acción de las app del SO, en este caso SEND.
+     */
     public boolean onContextItemSelected (MenuItem item){
         switch (item.getItemId()){
             case R.id.menuCalculadora:
